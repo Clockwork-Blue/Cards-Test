@@ -11,8 +11,7 @@ function getRndInteger(min, max) {
 }
 
 function gtRndImg() {
-    let number = getRndInteger(1,506);
-    return "img/img ("+ number +").webp";
+    return getRndInteger(1,506);
 }
 
 function createcard(cnumber) {
@@ -38,13 +37,25 @@ function createcard(cnumber) {
     cardName.title = nameT;
     topRow.appendChild(cardName);
     //img
+    let imgNum = gtRndImg();
     let cardCenter = document.createElement("div");
     cardCenter.classList.add("CardRow");
     cardCenter.classList.add("c-center");
+    cardCenter.classList.add("img-p");
+    cardCenter.style.backgroundImage = "url(\"img/img ("+ imgNum +")-small.webp\")";
+        function load(){
+            cardCenter.classList.add("loaded");
+        }
     card.appendChild(cardCenter);
     let cardImg = document.createElement("img");
     cardImg.classList.add("emph-hov");
-    cardImg.src = gtRndImg();
+    cardImg.loading = "lazy";
+    cardImg.src = "img/img ("+ imgNum +").webp";
+        if (cardImg.complete) {
+            load();
+        } else {
+            cardImg.addEventListener("load", load);
+        }
     cardCenter.appendChild(cardImg);
     //footer
     let cardFooter = document.createElement("div");

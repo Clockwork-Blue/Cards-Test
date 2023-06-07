@@ -138,3 +138,21 @@ footer {
     bottom:0;
     color: grey;
 }
+
+.img-p {
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(10px);
+}
+.img-p > img {
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+}
+
+.loaded {
+    filter: blur(0px);
+}
+
+.loaded > img {
+    opacity: 1;
+}
